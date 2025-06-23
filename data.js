@@ -1,7 +1,7 @@
 const gameData = {
     categories: [
         {
-            name: "Binary & Data Basics",
+            name: "Binary Basics",
             questions: [
                 {
                     value: 200,
@@ -61,7 +61,7 @@ const gameData = {
             ]
         },
         {
-            name: "Computer Architecture & Components",
+            name: "Computer Components",
             questions: [
                 {
                     value: 200,
