@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeopardy Study App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <div class="header">Jeopardy Study Test</div>
+        <div class="score-display">Score: <span id="score">0</span></div>
+
+        <div id="jeopardy-board" class="jeopardy-board">
+            </div>
+
+        <div id="question-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <p id="question-text"></p>
+                <input type="text" id="user-answer-input" placeholder="What is...">
+                <button id="submit-answer-button">Submit Answer</button>
+                <div id="feedback-message"></div>
+                <button id="reveal-answer-button">Reveal Answer</button>
+                <p id="correct-answer-text" style="display:none;"></p>
+                <button id="next-question-button" style="display:none;">Next Question</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

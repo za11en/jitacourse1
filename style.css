@@ -1,0 +1,211 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #00004d; /* Dark blue */
+    color: white;
+    margin: 0;
+}
+
+.game-container {
+    text-align: center;
+    padding: 20px;
+    border: 2px solid gold;
+    border-radius: 10px;
+    background-color: #000080; /* Slightly lighter blue */
+    width: 1000px;
+}
+
+.header {
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: gold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.score-display {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.jeopardy-board {
+    display: grid;
+    /* This will be dynamic based on categories/questions in JS */
+    /* Example for 4 categories, 5 questions each: */
+    /* grid-template-columns: repeat(4, 1fr); */
+    /* grid-template-rows: auto repeat(5, 1fr); */
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.category-title {
+    background-color: #0000b3; /* Even lighter blue */
+    padding: 10px;
+    font-weight: bold;
+    font-size: 1.2em;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+.question-cell {
+    background-color: #0000ff; /* Blue */
+    padding: 15px;
+    font-size: 1.8em;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.2s;
+    user-select: none; /* Prevent text selection */
+}
+
+.question-cell:hover:not(.answered) {
+    background-color: #3333ff; /* Lighter blue on hover */
+}
+
+.question-cell.answered {
+    background-color: #333333; /* Dark grey for answered questions */
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Modal for questions */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 30px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 8px;
+    color: #333;
+    position: relative;
+    text-align: center;
+}
+
+.close-button {
+    color: #aaa;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#question-text {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#user-answer-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#submit-answer-button, #reveal-answer-button, #next-question-button {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    margin: 5px;
+    transition: background-color 0.2s;
+}
+
+#submit-answer-button:hover { background-color: #45a049; }
+#reveal-answer-button { background-color: #f44336; }
+#reveal-answer-button:hover { background-color: #da190b; }
+#next-question-button { background-color: #008CBA; }
+#next-question-button:hover { background-color: #007bb5; }
+
+#feedback-message {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+#correct-answer-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #666;
+}
+
+/* Styles for the status icons (check/x) */
+.question-cell .status-icon {
+    font-size: 2.5em; /* Make them prominent */
+    font-weight: bold;
+    line-height: 1; /* Adjust line height to center vertically */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure icon fills the cell */
+    height: 100%;
+}
+
+.question-cell .status-icon.correct {
+    color: #4CAF50; /* Green */
+}
+
+.question-cell .status-icon.incorrect {
+    color: #f44336; /* Red */
+}
+
+/* Ensure the dollar value doesn't interfere when icon is added */
+.question-cell.answered {
+    background-color: #333333; /* Dark grey for answered questions */
+    color: #888;
+    cursor: not-allowed;
+    display: flex; /* Use flexbox for centering content */
+    justify-content: center;
+    align-items: center;
+    font-size: initial; /* Reset font size, icon will control its own */
+}
+
+/* Adjust modal content for better spacing */
+.modal-content {
+    /* ... existing styles ... */
+    display: flex; /* Use flexbox for modal content */
+    flex-direction: column; /* Stack elements vertically */
+    gap: 15px; /* Add some space between elements */
+}
+
+/* Ensure buttons are properly spaced */
+#submit-answer-button, #reveal-answer-button, #next-question-button {
+    /* ... existing styles ... */
+    margin: 5px auto; /* Center buttons and add vertical margin */
+    display: block; /* Make them block-level to stack better */
+}
+
+/* Ensure correct answer text is styled */
+#correct-answer-text {
+    margin-top: 10px;
+    font-style: italic;
+    color: #666; /* Keep existing color */
+    font-size: 1.2em; /* Make it a bit larger */
+}
