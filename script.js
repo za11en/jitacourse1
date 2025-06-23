@@ -1,4 +1,3 @@
-// --- DOM Element Selections ---
 const jeopardyBoard = document.getElementById('jeopardy-board');
 const scoreDisplay = document.getElementById('score');
 const newGameButton = document.getElementById('new-game-button');
@@ -12,13 +11,11 @@ const revealAnswerButton = document.getElementById('reveal-answer-button');
 const correctAnswerText = document.getElementById('correct-answer-text');
 const nextQuestionButton = document.getElementById('next-question-button');
 
-// --- Game State Variables ---
 let currentScore = 0;
 let currentQuestion = null;
 let currentCell = null;
 let answeredQuestions = new Set();
 
-// --- Core Functions ---
 
 function initializeBoard() {
     closeQuestionModal();
@@ -111,9 +108,6 @@ function normalizeString(str) {
               .trim();
 }
 
-/**
- * Checks the user's answer, provides feedback, and reveals the correct answer.
- */
 function checkAnswer() {
     const userAnswer = normalizeString(userAnswerInput.value);
     const correctAnswer = normalizeString(currentQuestion.answer);
@@ -131,31 +125,30 @@ function checkAnswer() {
 
     updateScoreDisplay();
 
-    // --- CHANGE: Immediately reveal the answer after submission ---
+
     correctAnswerText.textContent = `Correct Answer: ${currentQuestion.answer}`;
     correctAnswerText.style.display = 'block';
 
-    // Pass the correctness result to mark the cell on the board
+
     markQuestionAsAnswered(isCorrect);
     showNextStep();
 }
 
-/**
- * Handles the user giving up and revealing the answer without submitting.
- */
+
+
 function revealAnswer() {
     correctAnswerText.textContent = `Correct Answer: ${currentQuestion.answer}`;
     correctAnswerText.style.display = 'block';
     feedbackMessage.textContent = 'Answer revealed.';
     
-    // Mark the cell as answered, but with a neutral state (no check or X)
+
     markQuestionAsAnswered(null);
     showNextStep();
 }
 
 /**
  * Marks the cell on the board as answered, adding a check or X.
- * @param {boolean|null} isCorrect - True for correct, false for incorrect, null for neutral.
+ * @param {boolean|null} isCorrect 
  */
 function markQuestionAsAnswered(isCorrect) {
     if (currentCell && !answeredQuestions.has(currentCell.dataset.id)) {
@@ -163,13 +156,13 @@ function markQuestionAsAnswered(isCorrect) {
         currentCell.classList.add('answered');
         currentCell.tabIndex = -1;
 
-        // --- CHANGE: Add visual feedback icon to the board cell ---
+
         if (isCorrect === true) {
             currentCell.innerHTML = '<span class="feedback-icon correct">✓</span>';
         } else if (isCorrect === false) {
             currentCell.innerHTML = '<span class="feedback-icon incorrect">✗</span>';
         } else {
-            // User clicked "Reveal Answer", so keep it blank
+
             currentCell.textContent = '';
         }
     }
@@ -188,7 +181,7 @@ function goToNextQuestion() {
     currentCell = null;
 }
 
-// --- Event Listeners Setup ---
+
 newGameButton.addEventListener('click', initializeBoard);
 closeButton.addEventListener('click', goToNextQuestion);
 submitAnswerButton.addEventListener('click', checkAnswer);
