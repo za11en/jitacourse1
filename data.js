@@ -1,15 +1,10 @@
-// --- START OF FILE data.js ---
-
 const gameData = {
     categories: [
         {
             name: "Binary & Data Basics",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
-                    // The top-level 'clue' is now effectively a placeholder.
-                    // The real clues are inside the 'alternates' array.
                     clue: "This base-2 numeral system is the communication that a computer uses.",
                     alternates: [
                         { clue: "This base-2 numeral system is the communication that a computer uses.", answer: "Binary" },
@@ -19,7 +14,6 @@ const gameData = {
                         { clue: "Computers communicate using this system of 1s and 0s.", answer: "Binary" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "How many bits make up one byte?",
@@ -31,7 +25,6 @@ const gameData = {
                         { clue: "The next unit of binary, a byte, consists of this many bits.", answer: "eight" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "This newer standard coding system allows a character to be stored in more than one byte.",
@@ -43,7 +36,6 @@ const gameData = {
                         { clue: "Unlike ASCII, this coding standard can use more than a single byte for characters.", answer: "UTF-8" }
                     ]
                 },
-                // $800 Questions
                 {
                     value: 800,
                     clue: "This is the smallest unit of data in a computer, represented as a 0 or 1.",
@@ -55,7 +47,6 @@ const gameData = {
                         { clue: "Composed of a 0 or a 1, this is the smallest piece of computer data.", answer: "Bit" }
                     ]
                 },
-                // $1000 Questions
                 {
                     value: 1000,
                     clue: "This numerical base uses 16 unique symbols, 0-9 and A-F, and is often used in computing to represent binary data compactly.",
