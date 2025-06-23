@@ -1,59 +1,67 @@
+/* --- Base Styles (Mobile-First) --- */
 body {
     font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Stack elements vertically on small screens */
+    justify-content: flex-start; /* Align content to the top */
     align-items: center;
     min-height: 100vh;
     background-color: #00004d; /* Dark blue */
     color: white;
     margin: 0;
+    padding: 10px; /* Add some padding to prevent content hugging edges */
+    box-sizing: border-box; /* Include padding/border in element's total width/height */
 }
 
 .game-container {
     text-align: center;
-    padding: 20px;
+    padding: 15px; /* Slightly less padding for small screens */
     border: 2px solid gold;
     border-radius: 10px;
     background-color: #000080; /* Slightly lighter blue */
-    width: 1000px;
+    width: 100%; /* Take full width on small screens */
+    max-width: 1000px; /* Max width for larger screens */
 }
 
 .header {
-    font-size: 3em;
+    font-size: 2em; /* Smaller font for mobile */
     font-weight: bold;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color: gold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .score-display {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.2em; /* Smaller font for mobile */
+    margin-bottom: 15px;
 }
 
 .jeopardy-board {
     display: grid;
-    /* This will be dynamic based on categories/questions in JS */
-    /* Example for 4 categories, 5 questions each: */
-    /* grid-template-columns: repeat(4, 1fr); */
-    /* grid-template-rows: auto repeat(5, 1fr); */
-    gap: 10px;
-    margin-bottom: 20px;
+    /* On mobile, we want a single column layout that implicitly stacks */
+    /* Category titles and question cells will be positioned explicitly by JS for grid,
+       but visually will stack due to 1fr column. */
+    grid-template-columns: 1fr; /* Default to a single column */
+    gap: 8px; /* Slightly smaller gap for mobile */
+    margin-bottom: 15px;
+    width: 100%; /* Ensure it takes full width */
 }
 
 .category-title {
-    background-color: #0000b3; /* Even lighter blue */
-    padding: 10px;
+    background-color: #0000b3;
+    padding: 8px; /* Smaller padding */
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em;
     border-radius: 5px;
     text-transform: uppercase;
+    text-align: center;
+    /* On mobile, titles just take full width within their implicit grid flow */
 }
 
 .question-cell {
-    background-color: #0000ff; /* Blue */
-    padding: 15px;
-    font-size: 1.8em;
+    background-color: #0000ff;
+    padding: 12px; /* Smaller padding */
+    font-size: 1.5em; /* Smaller font for mobile */
     font-weight: bold;
     cursor: pointer;
     border-radius: 5px;
@@ -61,11 +69,8 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s;
-    user-select: none; /* Prevent text selection */
-}
-
-.question-cell:hover:not(.answered) {
-    background-color: #3333ff; /* Lighter blue on hover */
+    user-select: none;
+    min-height: 60px; /* Ensure a minimum height for clickability */
 }
 
 .question-cell.answered {
@@ -74,7 +79,7 @@ body {
     cursor: not-allowed;
 }
 
-/* Modal for questions */
+/* Modal for questions - generally good on all screens but adjust fonts/padding */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
@@ -92,9 +97,9 @@ body {
 .modal-content {
     background-color: #fefefe;
     margin: auto;
-    padding: 30px;
+    padding: 20px; /* Slightly less padding */
     border: 1px solid #888;
-    width: 80%;
+    width: 90%; /* Wider on small screens */
     max-width: 600px;
     border-radius: 8px;
     color: #333;
@@ -113,15 +118,15 @@ body {
 }
 
 #question-text {
-    font-size: 1.5em;
-    margin-bottom: 20px;
+    font-size: 1.2em; /* Smaller font for mobile */
+    margin-bottom: 15px;
 }
 
 #user-answer-input {
     width: calc(100% - 20px);
-    padding: 10px;
-    margin-bottom: 15px;
-    font-size: 1.1em;
+    padding: 8px; /* Smaller padding */
+    margin-bottom: 10px;
+    font-size: 1em;
     border: 1px solid #ddd;
     border-radius: 5px;
 }
@@ -129,12 +134,12 @@ body {
 #submit-answer-button, #reveal-answer-button, #next-question-button {
     background-color: #4CAF50; /* Green */
     color: white;
-    padding: 12px 20px;
+    padding: 10px 15px; /* Smaller padding */
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 1.1em;
-    margin: 5px;
+    font-size: 1em;
+    margin: 3px; /* Smaller margin */
     transition: background-color 0.2s;
 }
 
@@ -147,65 +152,119 @@ body {
 #feedback-message {
     margin-top: 15px;
     font-weight: bold;
-    font-size: 1.2em;
+    font-size: 1.1em; /* Smaller font for mobile */
 }
 
 #correct-answer-text {
     margin-top: 10px;
     font-style: italic;
     color: #666;
+    font-size: 0.9em; /* Smaller font for mobile */
 }
 
-/* Styles for the status icons (check/x) */
-.question-cell .status-icon {
-    font-size: 2.5em; /* Make them prominent */
-    font-weight: bold;
-    line-height: 1; /* Adjust line height to center vertically */
-    display: flex; /* Use flexbox to center content */
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Ensure icon fills the cell */
-    height: 100%;
+/* --- Media Queries for Larger Screens --- */
+
+/* Tablet Portrait and Larger */
+@media (min-width: 768px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    .header {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
+
+    .score-display {
+        font-size: 1.3em;
+        margin-bottom: 20px;
+    }
+
+    .jeopardy-board {
+        /* For tablets and larger, dynamically set columns based on JS variable */
+        grid-template-columns: repeat(var(--num-categories, 3), 1fr); /* Default 3, JS sets --num-categories */
+        grid-auto-rows: minmax(80px, auto); /* Flexible row height */
+        gap: 15px;
+    }
+
+    .category-title {
+        font-size: 1.2em;
+        padding: 10px;
+        /* Position explicitly in the first row of its column by JavaScript */
+        /* grid-row: 1; will be set by JS */
+    }
+
+    .question-cell {
+        font-size: 1.6em;
+        padding: 15px;
+        min-height: 80px;
+        /* Position explicitly by JavaScript for column and row */
+    }
+
+    .modal-content {
+        padding: 30px;
+        width: 80%;
+    }
+
+    #question-text {
+        font-size: 1.4em;
+    }
+
+    #user-answer-input {
+        padding: 10px;
+        font-size: 1.1em;
+    }
+
+    #submit-answer-button, #reveal-answer-button, #next-question-button {
+        padding: 12px 20px;
+        font-size: 1.1em;
+        margin: 5px;
+    }
+
+    #feedback-message {
+        font-size: 1.2em;
+    }
+
+    #correct-answer-text {
+        font-size: 1em;
+    }
 }
 
-.question-cell .status-icon.correct {
-    color: #4CAF50; /* Green */
-}
+/* Desktop and Larger */
+@media (min-width: 1024px) {
+    .game-container {
+        padding: 30px;
+    }
 
-.question-cell .status-icon.incorrect {
-    color: #f44336; /* Red */
-}
+    .header {
+        font-size: 3em;
+        margin-bottom: 25px;
+    }
 
-/* Ensure the dollar value doesn't interfere when icon is added */
-.question-cell.answered {
-    background-color: #333333; /* Dark grey for answered questions */
-    color: #888;
-    cursor: not-allowed;
-    display: flex; /* Use flexbox for centering content */
-    justify-content: center;
-    align-items: center;
-    font-size: initial; /* Reset font size, icon will control its own */
-}
+    .score-display {
+        font-size: 1.5em;
+        margin-bottom: 25px;
+    }
 
-/* Adjust modal content for better spacing */
-.modal-content {
-    /* ... existing styles ... */
-    display: flex; /* Use flexbox for modal content */
-    flex-direction: column; /* Stack elements vertically */
-    gap: 15px; /* Add some space between elements */
-}
+    .jeopardy-board {
+        gap: 20px;
+    }
 
-/* Ensure buttons are properly spaced */
-#submit-answer-button, #reveal-answer-button, #next-question-button {
-    /* ... existing styles ... */
-    margin: 5px auto; /* Center buttons and add vertical margin */
-    display: block; /* Make them block-level to stack better */
-}
+    .category-title {
+        font-size: 1.3em;
+    }
 
-/* Ensure correct answer text is styled */
-#correct-answer-text {
-    margin-top: 10px;
-    font-style: italic;
-    color: #666; /* Keep existing color */
-    font-size: 1.2em; /* Make it a bit larger */
+    .question-cell {
+        font-size: 1.8em;
+        min-height: 100px;
+    }
+
+    .modal-content {
+        width: 70%;
+        max-width: 600px;
+    }
+
+    #question-text {
+        font-size: 1.5em;
+    }
 }
