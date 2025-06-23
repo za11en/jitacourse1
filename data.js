@@ -1,3 +1,5 @@
+// --- START OF FILE data.js ---
+
 const gameData = {
     categories: [
         {
@@ -6,6 +8,8 @@ const gameData = {
                 // $200 Questions
                 {
                     value: 200,
+                    // The top-level 'clue' is now effectively a placeholder.
+                    // The real clues are inside the 'alternates' array.
                     clue: "This base-2 numeral system is the communication that a computer uses.",
                     alternates: [
                         { clue: "This base-2 numeral system is the communication that a computer uses.", answer: "Binary" },
@@ -39,7 +43,7 @@ const gameData = {
                         { clue: "Unlike ASCII, this coding standard can use more than a single byte for characters.", answer: "UTF-8" }
                     ]
                 },
-                // $800 Questions (NEW)
+                // $800 Questions
                 {
                     value: 800,
                     clue: "This is the smallest unit of data in a computer, represented as a 0 or 1.",
@@ -51,7 +55,7 @@ const gameData = {
                         { clue: "Composed of a 0 or a 1, this is the smallest piece of computer data.", answer: "Bit" }
                     ]
                 },
-                // $1000 Questions (NEW)
+                // $1000 Questions
                 {
                     value: 1000,
                     clue: "This numerical base uses 16 unique symbols, 0-9 and A-F, and is often used in computing to represent binary data compactly.",
@@ -68,7 +72,6 @@ const gameData = {
         {
             name: "Computer Architecture & Components",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
                     clue: "This is considered the brain of your computer, performing calculations and data processing.",
@@ -80,7 +83,6 @@ const gameData = {
                         { clue: "This microchip is the primary component that performs functions on data.", answer: "CPU" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "This row of wires interconnects parts of a computer, acting like veins.",
@@ -92,7 +94,6 @@ const gameData = {
                         { clue: "The EDB refers to this component.", answer: "External Data Bus" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "This CPU component keeps its operations in sync by sending a voltage when data is sent or received.",
@@ -104,7 +105,6 @@ const gameData = {
                         { clue: "Referred to as a clock cycle when a voltage is sent, what is this component?", answer: "Clock Wire" }
                     ]
                 },
-                // $800 Questions (NEW)
                 {
                     value: 800,
                     clue: "This component executes instructions from computer programs, often having multiple cores.",
@@ -116,7 +116,6 @@ const gameData = {
                         { clue: "Often found with several 'cores,' this part does the actual computing work.", answer: "Processor" }
                     ]
                 },
-                // $1000 Questions (NEW)
                 {
                     value: 1000,
                     clue: "This specialized processor is designed to rapidly manipulate and alter memory to accelerate the creation of images in a frame buffer.",
@@ -133,19 +132,17 @@ const gameData = {
         {
             name: "Memory & Storage",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
                     clue: "This type of memory chip stores your BIOS and is non-volatile.",
                     alternates: [
                         { clue: "This type of memory chip stores your BIOS and is non-volatile.", answer: "ROM" },
-                        { clue: "What does ROM stand for?", answer: "Read Only Memory Chip" },
+                        { clue: "What does ROM stand for?", answer: "Read Only Memory" },
                         { clue: "Unlike RAM, data on this memory chip isn't lost when the computer is turned off.", answer: "ROM" },
                         { clue: "Where is the BIOS stored?", answer: "ROM" },
                         { clue: "The Basic Input Output Services are stored on this non-volatile memory chip.", answer: "ROM" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "What does DRAM stand for?",
@@ -157,7 +154,6 @@ const gameData = {
                         { clue: "When a 1 or 0 is sent to this memory type, it's stored in a capacitor.", answer: "DRAM" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "This type of RAM is used for graphics memory on video adapters.",
@@ -169,7 +165,6 @@ const gameData = {
                         { clue: "Video adapters commonly utilize this specific type of SDRAM.", answer: "GDDR SDRAM" }
                     ]
                 },
-                // $800 Questions (NEW)
                 {
                     value: 800,
                     clue: "This high-speed memory acts as a buffer between the CPU and main memory to reduce average data access time.",
@@ -181,7 +176,6 @@ const gameData = {
                         { clue: "A temporary storage area that the CPU can access quickly is known as this.", answer: "Cache" }
                     ]
                 },
-                // $1000 Questions (NEW)
                 {
                     value: 1000,
                     clue: "This storage device uses solid-state memory to store persistent data, offering faster speeds than traditional HDDs.",
@@ -196,9 +190,8 @@ const gameData = {
             ]
         },
         {
-            name: "Motherboards & Power",
+            name: "Mother boards & Power",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
                     clue: "This component is described as the body or circulatory system of the computer, connecting all the pieces.",
@@ -210,7 +203,6 @@ const gameData = {
                         { clue: "It serves as the central hub for connecting hardware components.", answer: "Motherboard" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "This path connects the CPU and the Northbridge.",
@@ -222,7 +214,6 @@ const gameData = {
                         { clue: "It connects various components like the chipset, expansion cards, and RAM.", answer: "Front-Side Bus" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "The frequency at which a CPU operates is determined by applying this to the FSB speed.",
@@ -234,7 +225,6 @@ const gameData = {
                         { clue: "If a processor runs at 3200 MHz and uses a 400 MHz FSB, the CPU is 8 times faster due to this.", answer: "Clock multiplier" }
                     ]
                 },
-                // $800 Questions (NEW)
                 {
                     value: 800,
                     clue: "This component regulates and supplies stable electrical power to the computer's components.",
@@ -246,7 +236,6 @@ const gameData = {
                         { clue: "Without this, your computer wouldn't receive the necessary electricity to run.", answer: "Power Supply Unit" }
                     ]
                 },
-                // $1000 Questions (NEW)
                 {
                     value: 1000,
                     clue: "This part of the chipset on a motherboard handles communication between the CPU and high-speed components like RAM and graphics cards.",
@@ -263,7 +252,6 @@ const gameData = {
         {
             name: "Operating Systems & Software",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
                     clue: "This is the whole software package that manages our computer's resources and let's us interact with it.",
@@ -275,7 +263,6 @@ const gameData = {
                         { clue: "Windows, Mac, and Linux are examples of this.", answer: "Operating System" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "This OS kernel manager handles programs from their order to how many resources they use.",
@@ -287,19 +274,17 @@ const gameData = {
                         { clue: "The kernel's role in managing system programs, their order, and resource allocation is handled by this.", answer: "Process Manager" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "This file system is common for Linux operating systems.",
                     alternates: [
                         { clue: "This file system is common for Linux operating systems.", answer: "Ext4" },
-                        { clue: "What does Ext4 stand for?", answer: "extension 4" },
+                        { clue: "What does Ext4 stand for?", answer: "fourth extended filesystem" },
                         { clue: "Linux typically uses this file system.", answer: "Ext4" },
                         { clue: "The extension 4 file system is known by this abbreviation.", answer: "Ext4" },
                         { clue: "If you're on a Linux OS, your file system is most likely this.", answer: "Ext4" }
                     ]
                 },
-                // $800 Questions (NEW)
                 {
                     value: 800,
                     clue: "This core component of an operating system manages system resources, handles processes, and communicates with hardware.",
@@ -311,7 +296,6 @@ const gameData = {
                         { clue: "It controls everything in the system, from memory to I/O devices, acting as the OS's fundamental core.", answer: "Kernel" }
                     ]
                 },
-                // $1000 Questions (NEW)
                 {
                     value: 1000,
                     clue: "This type of software is copyrighted and proprietary, meaning users typically purchase a license to use it.",
@@ -328,7 +312,6 @@ const gameData = {
         {
             name: "Networking & Peripherals",
             questions: [
-                // $200 Questions
                 {
                     value: 200,
                     clue: "This is an interconnection of computers.",
@@ -340,7 +323,6 @@ const gameData = {
                         { clue: "Networking involves managing, building, and designing these.", answer: "Networks" }
                     ]
                 },
-                // $400 Questions
                 {
                     value: 400,
                     clue: "This device connects many different devices and helps route network traffic.",
@@ -352,7 +334,6 @@ const gameData = {
                         { clue: "It ensures data packets reach their correct destinations across different networks.", answer: "Router" }
                     ]
                 },
-                // $600 Questions
                 {
                     value: 600,
                     clue: "This is the standard for many televisions and computers nowadays, outputting both audio and visual.",
@@ -364,7 +345,6 @@ const gameData = {
                         { clue: "Both audio and visual signals are outputted by this common connector.", answer: "HDMI" }
                     ]
                 },
-                // $800 Questions (NEW)
                 {
                     value: 800,
                     clue: "This unique numerical label is assigned to each device connected to a computer network, allowing it to communicate.",
@@ -376,7 +356,6 @@ const gameData = {
                         { clue: "Every device on a network needs one of these to send and receive data.", answer: "IP Address" }
                     ]
                 },
-                // $1000 Questions (NEW)
                 {
                     value: 1000,
                     clue: "This networking device connects multiple network segments and forwards data packets between them based on their IP addresses.",
